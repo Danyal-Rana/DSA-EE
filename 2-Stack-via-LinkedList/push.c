@@ -17,9 +17,12 @@ void push(int data, struct Node **top)
     if (top!=NULL)
     {
         newNode->next = *top;
-        
+        *top = newNode;
     }
-    *top = newNode;
+    else
+    {
+        *top = newNode;
+    }
 }
 
 void showStack (struct Node *temp)
