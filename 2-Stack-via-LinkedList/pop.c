@@ -14,7 +14,7 @@ void push(int data, struct Node **top)
     newNode->data = data;
     newNode->next = NULL;
 
-    if (*top!=NULL)
+    if (top!=NULL)
     {
         newNode->next = *top;
         *top = newNode;
@@ -23,6 +23,24 @@ void push(int data, struct Node **top)
     {
         *top = newNode;
     }
+}
+
+// deleting function / pop function
+int pop(struct Node **temp)
+{
+    int x = -1;
+
+    if (*temp==NULL)
+    {
+        return x;
+    }
+
+    struct Node *temp2 = *temp;
+    x = temp2->data;
+    *temp = temp2->next;
+    temp2->next = NULL;
+
+    return x;
 }
 
 void showStack (struct Node *temp)
@@ -45,6 +63,12 @@ int main () {
 
     struct Node *temp = top;
     showStack(temp);
+    printf("\n");
 
+    int deletedItem = pop(&top);
+    printf("%d element has been deleted.", deletedItem);
+    printf("\n");
+
+    showStack(top);
     return 0;
 }
